@@ -1,0 +1,95 @@
+/* =====================================================================
+   Estrela do botão "Enviar mensagem"
+   Ao enviar, a estrela sai do botão e fica a brilhar; quando a mensagem
+   chega, explode em várias estrelinhas que caem e desaparecem.
+   A lógica está em js/estrela.js. Usa --lua-rgb, a cor do botão.
+   ===================================================================== */
+
+.btn.main .estrela-ico {
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.3s;
+}
+.btn.main:hover .estrela-ico {
+  transform: rotate(72deg) scale(1.15);
+}
+.btn.main .estrela-ico.fora {
+  opacity: 0;
+  transform: scale(0.3);
+}
+.btn.main .estrela-ico.volta {
+  animation: estrela-volta 0.55s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+@keyframes estrela-volta {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* a estrela que voa */
+.estrela-voa {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  pointer-events: none;
+}
+.estrela-voa svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+  filter: drop-shadow(0 0 5px rgb(var(--m))) drop-shadow(0 0 16px rgba(var(--m), 0.85));
+  animation: estrela-brilha 0.9s ease-in-out infinite;
+}
+@keyframes estrela-brilha {
+  50% {
+    transform: scale(1.18) rotate(18deg);
+  }
+}
+
+/* a explosão */
+.estrela-clarao {
+  position: fixed;
+  z-index: 59;
+  width: 280px;
+  height: 280px;
+  margin: -140px 0 0 -140px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0, rgba(var(--m), 0.75) 12%, rgba(var(--m), 0.25) 32%, transparent 62%);
+  mix-blend-mode: screen;
+}
+.estrela-anel {
+  position: fixed;
+  z-index: 59;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 2px solid rgba(var(--m), 0.9);
+  box-shadow: 0 0 20px rgba(var(--m), 0.8);
+}
+.estrelinha {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+.estrelinha svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  filter: drop-shadow(0 0 4px currentColor);
+}

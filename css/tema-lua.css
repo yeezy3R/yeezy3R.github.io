@@ -1,0 +1,336 @@
+/* =====================================================================
+   Tema Lua + botão do meteoro
+   ---------------------------------------------------------------------
+   Ao clicar no meteoro (☄) do cabeçalho, um meteoro atravessa o ecrã e,
+   no impacto, o site troca de "Sol" (dourado) para "Lua" (azul), com uma
+   onda circular a partir do ponto de impacto. Clicar outra vez volta ao Sol.
+   O tema Lua troca as duas famílias de cores (dourado <-> azul).
+   A lógica está em js/meteoro.js (e js/tema.js, que lembra a escolha).
+   ===================================================================== */
+
+/* ---------- Tema Lua: dourado <-> azul ---------- */
+html[data-tema="lua"] {
+  --gold: #8fa6ff;
+  --gold-l: #cdd7ff;
+  --gold-d: #4a5fb8;
+  --sol-rgb: 143, 166, 255;
+  --sol2: #7a92f5;
+  --sol3: #e3e9ff;
+  --sol4: #4a5fb8;
+  --sol-ink: #0b1030;
+  --sol-ink-rgb: 11, 16, 48;
+
+  --blue: #fad678;
+  --blue-l: #fff4d6;
+  --blue-d: #c9a24a;
+  --lua-rgb: 250, 214, 120;
+  --lua2: #f2c260;
+  --lua2-rgb: 242, 194, 96;
+  --lua3: #ffe6a8;
+  --lua4: #fff0c4;
+  --lua-ink: #1a1405;
+  --lua-glow-rgb: 250, 214, 120;
+}
+
+/* imagens: os olhos do sol rodam a cor para azul; os olhos da lua trocam
+   por uma versão dourada clara (img/*-ouro.webp), sem tons esverdeados */
+.so-lua {
+  display: none !important;
+}
+html[data-tema="lua"] .so-lua {
+  display: block !important;
+}
+html[data-tema="lua"] .so-sol {
+  display: none !important;
+}
+html[data-tema="lua"] .eyes.sol img {
+  filter: hue-rotate(180deg);
+}
+html[data-tema="lua"] .orb .sunimg {
+  filter: hue-rotate(180deg) drop-shadow(0 0 18px rgba(var(--sol-rgb), 0.55))
+    drop-shadow(0 0 40px rgba(var(--sol-rgb), 0.25));
+  animation-name: sunspin, sunpulse-lua;
+}
+@keyframes sunpulse-lua {
+  50% {
+    filter: hue-rotate(180deg) drop-shadow(0 0 26px rgba(var(--sol-rgb), 0.8))
+      drop-shadow(0 0 60px rgba(var(--sol-rgb), 0.35));
+  }
+}
+/* nebulosa do fundo: em cima azul, em baixo dourado claro */
+html[data-tema="lua"] .nebula:before {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -8%, rgba(143, 166, 255, 0.2), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 12% 30%, rgba(120, 80, 255, 0.06), transparent 70%);
+}
+html[data-tema="lua"] .nebula:after {
+  background:
+    radial-gradient(ellipse 75% 55% at 50% 112%, rgba(250, 214, 120, 0.2), transparent 70%),
+    radial-gradient(ellipse 40% 35% at 88% 65%, rgba(250, 190, 110, 0.07), transparent 70%);
+}
+
+/* ---------- O botão flutuante com os olhos (lança o meteoro) ----------
+   Mostra os olhos da lua (azuis no modo Sol, dourados no modo Lua) e as
+   íris seguem o rato, como no topo do site. Usa --lua-rgb, que é sempre a
+   cor do "outro" tema. */
+.ceu-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 40;
+  width: 178px;
+  height: 58px;
+  padding: 0;
+  border: 1px solid rgba(var(--lua-rgb), 0.45);
+  border-radius: 99px;
+  background: radial-gradient(ellipse at 50% 40%, rgba(var(--lua-rgb), 0.14), rgba(6, 8, 24, 0.86) 72%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 34px -4px rgba(var(--lua-rgb), 0.5),
+    inset 0 0 18px rgba(var(--lua-rgb), 0.16);
+  cursor: pointer;
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.4s;
+  animation: ceu-flutua 5s ease-in-out infinite;
+}
+.ceu-btn > span {
+  position: absolute;
+  pointer-events: none;
+}
+.ceu-btn:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 50px 0 rgba(var(--lua-rgb), 0.65),
+    inset 0 0 22px rgba(var(--lua-rgb), 0.28);
+}
+.ceu-btn:focus-visible {
+  outline: 2px solid rgb(var(--lua-rgb));
+  outline-offset: 4px;
+}
+.ceu-btn[disabled] {
+  cursor: wait;
+}
+@keyframes ceu-flutua {
+  50% {
+    translate: 0 -6px;
+  }
+}
+
+/* halo que pulsa */
+.ceu-halo {
+  inset: -1px;
+  border-radius: 99px;
+  border: 1px solid rgba(var(--lua-rgb), 0.7);
+  animation: ceu-ping 2.6s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+@keyframes ceu-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  80%,
+  100% {
+    transform: scale(1.18, 1.5);
+    opacity: 0;
+  }
+}
+
+/* os olhos: recorte da imagem dos olhos da lua (olhos + lua ao meio) */
+.ceu-janela {
+  left: 50%;
+  top: 50%;
+  width: 160px;
+  height: 40px;
+  margin: -20px 0 0 -80px;
+  overflow: hidden;
+  border-radius: 99px;
+}
+.ceu-btn .ceu-olhos {
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 160px;
+  max-width: none;
+  margin: 0;
+}
+.ceu-btn .ceu-olhos:before {
+  display: none;
+}
+.ceu-btn .ceu-olhos img.base {
+  filter: brightness(1.35) drop-shadow(0 0 4px rgba(143, 166, 255, 0.5));
+}
+.ceu-btn .ceu-olhos .iris {
+  filter: drop-shadow(0 0 5px rgba(143, 166, 255, 0.9));
+}
+html[data-tema="lua"] .ceu-btn .ceu-olhos img.base {
+  filter: brightness(1.1) drop-shadow(0 0 4px rgba(250, 214, 120, 0.45));
+}
+html[data-tema="lua"] .ceu-btn .ceu-olhos .iris {
+  filter: drop-shadow(0 0 5px rgba(250, 214, 120, 0.85));
+}
+
+/* brilhinhos à volta */
+.ceu-brilho {
+  font-size: 9px;
+  line-height: 1;
+  color: rgb(var(--lua-rgb));
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+.ceu-brilho.b1 {
+  left: -4px;
+  top: 8px;
+}
+.ceu-brilho.b2 {
+  right: -2px;
+  bottom: 4px;
+  animation-delay: -1.2s;
+}
+
+/* balão "clica e muda o céu" */
+.ceu-dica {
+  right: calc(100% + 14px);
+  top: 50%;
+  padding: 8px 15px;
+  border: 1px solid rgba(var(--lua-rgb), 0.45);
+  border-radius: 99px;
+  background: rgba(6, 8, 24, 0.88);
+  color: rgb(var(--lua-rgb));
+  font: 14.5px var(--mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  box-shadow: 0 0 24px -6px rgba(var(--lua-rgb), 0.6);
+  opacity: 0;
+  transform: translate(10px, -50%);
+  transition:
+    opacity 0.4s,
+    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.ceu-dica:before {
+  content: "☄ ";
+}
+.ceu-btn:hover .ceu-dica,
+.ceu-btn:focus-visible .ceu-dica,
+.ceu-btn.dica .ceu-dica {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+/* ao clicar: o astro dá um pulso */
+.ceu-btn.a-lancar {
+  animation: ceu-pulso 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@keyframes ceu-pulso {
+  40% {
+    transform: scale(1.15);
+    box-shadow: 0 0 70px 10px rgba(var(--lua-rgb), 0.8);
+  }
+}
+
+@media (max-width: 560px) {
+  .ceu-btn {
+    right: 16px;
+    bottom: 16px;
+    transform-origin: right bottom;
+    scale: 0.88;
+  }
+  .ceu-dica {
+    font-size: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ceu-btn,
+  .ceu-btn * {
+    animation: none !important;
+  }
+}
+
+/* Entre 761 e 960 px (tablets) o cabeçalho não cabia numa linha e o PT/EN
+   ficava cortado (já acontecia no site original). Aqui o menu passa para uma
+   2.ª linha. (No telemóvel o menu continua numa linha com scroll, como no original.) */
+@media (min-width: 761px) and (max-width: 980px) {
+  header .wrap {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+  header nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* ---------- O meteoro e o impacto ---------- */
+.meteoro {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.meteoro .cauda {
+  position: absolute;
+  right: 0;
+  top: -2.5px;
+  width: 380px;
+  height: 5px;
+  border-radius: 5px;
+  transform-origin: right center;
+  background: linear-gradient(90deg, transparent, rgba(var(--m), 0.25) 45%, rgba(var(--m), 0.95) 88%, #fff);
+}
+.meteoro .cabeca {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 12px 4px rgba(var(--m), 0.95),
+    0 0 44px 14px rgba(var(--m), 0.5);
+}
+.impacto {
+  position: fixed;
+  z-index: 59;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 2px solid rgba(var(--m), 0.9);
+  box-shadow:
+    0 0 30px rgba(var(--m), 0.8),
+    inset 0 0 20px rgba(var(--m), 0.6);
+}
+.clarao {
+  position: fixed;
+  z-index: 58;
+  width: 600px;
+  height: 600px;
+  margin: -300px 0 0 -300px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.85), rgba(var(--m), 0.35) 25%, transparent 65%);
+}
+.faisca {
+  position: fixed;
+  z-index: 59;
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: #fff;
+  box-shadow: 0 0 8px 2px rgba(var(--m), 0.9);
+}
+
+/* a onda que muda o tema (View Transitions) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

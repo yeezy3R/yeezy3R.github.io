@@ -1,0 +1,62 @@
+/* =====================================================================
+   Frameworks do portfólio
+   ---------------------------------------------------------------------
+   Cada framework fica numa "cascade layer" (@layer). Regras dentro de
+   uma layer perdem SEMPRE para as regras normais do css/style.css (que
+   não está em nenhuma layer). Assim as frameworks dão a base e as
+   classes utilitárias, e o design do site continua exatamente igual.
+
+   Onde cada uma é usada no index.html:
+     Bootstrap  -> cabeçalho e rodapé  (d-flex, align-items-center, ...)
+     UnoCSS     -> topo / hero          (un-inline-flex, un-items-center, ...)
+     Tailwind   -> Sobre e Skills       (tw:grid, tw:grid-cols-1, ...)
+     Bulma      -> Projetos             (bulma-is-flex, bulma-is-flex-wrap-wrap)
+     Foundation -> Percurso / CV e formulário (align-middle, align-justify)
+     Pico CSS   -> formulário de contacto (class="pico" no <form>)
+
+   Os ficheiros em css/frameworks/ são gerados com "npm run build"
+   (ver LEIA-ME.md). Não os edites à mão.
+   ===================================================================== */
+
+@layer bootstrap, bulma, foundation, pico, tailwind, uno;
+
+@import url("frameworks/bootstrap-grid.min.css") layer(bootstrap);
+@import url("frameworks/bulma.css") layer(bulma);
+@import url("frameworks/foundation.css") layer(foundation);
+@import url("frameworks/pico.css") layer(pico);
+@import url("frameworks/tailwind.css") layer(tailwind);
+@import url("frameworks/uno.css") layer(uno);
+
+/* A Pico define "color-scheme" na raiz da página (claro/escuro conforme o
+   sistema). O site original não define nada, por isso repõe-se o valor
+   normal para as barras de scroll e controlos continuarem iguais. */
+:root {
+  color-scheme: normal;
+}
+
+/* A Pico dá aos campos do formulário uma altura fixa e "appearance: none",
+   e põe a <textarea> em "display: block". O site original não tinha isto,
+   por isso repõem-se os valores originais. O :where() tem especificidade 0,
+   logo qualquer regra do style.css continua a ganhar. */
+:where(.pico) :where(input, textarea) {
+  appearance: auto;
+  height: auto;
+}
+:where(.pico) :where(textarea) {
+  display: inline-block;
+}
+/* A Pico põe o botão de enviar a 100% de largura. No original só fica
+   a toda a largura no telemóvel (regra .formrow .btn.main do style.css). */
+:where(.pico) :where(button[type="submit"]) {
+  width: auto;
+}
+/* Texto de ajuda da Pico (o <small> logo a seguir a um campo): o contador
+   de caracteres "0/5000" mantém a largura original (alinhado à direita). */
+:where(.pico) :where(input, textarea) + :where(small) {
+  width: auto;
+}
+
+/* Armadilha para robôs (campo escondido .hp): fica como no original, sem Pico. */
+:where(.pico .hp) * {
+  all: revert;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diogo Ferreira — Programador C# / .NET</title>
+<meta name="description" content="Portfólio de Diogo Ferreira, programador C# / .NET à procura de estágio.">
+<meta name="theme-color" content="#03030a">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file:; style-src 'self' file: 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' file: data:; connect-src https://vgviflhmwsywtivqvzxc.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'; manifest-src 'none'; worker-src 'none'; media-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<script src="js/tema.js"></script>
+<link rel="stylesheet" href="css/frameworks.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/tema-lua.css">
+<link rel="stylesheet" href="css/estrela.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="ie5ab4f" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol></defs></svg>
+<div class="nebula" aria-hidden="true"></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div id="glow" aria-hidden="true"></div>
+<div id="bar" aria-hidden="true"></div>
+<header><div class="wrap d-flex align-items-center justify-content-between">
+<a class="logo d-flex align-items-center" href="#sol"><i>✦</i>diogo.ferreira</a>
+<nav aria-label="Principal"><a href="#sol" data-i="n_home">início</a><a href="#sobre" data-i="n_sobre">sobre</a><a href="#skills" data-i="n_skills">skills</a><a href="#projetos" data-i="n_proj">projetos</a><a href="#percurso" data-i="n_cv">cv</a><a href="#contacto" data-i="n_cont">contacto</a></nav>
+<div class="lang d-flex" role="group" aria-label="Idioma / Language">
+<button type="button" data-lang="pt" aria-pressed="true">PT</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+</div>
+</div></header>
+<main>
+<section id="sol"><div class="wrap">
+<p class="frase">if i was the moon would you<br>still look for the stars?</p>
+<div class="eyes sol" id="eyes-sol" aria-hidden="true">
+<img class="base" src="img/sol-base.webp" alt="" width="717" height="250">
+<img class="iris" src="img/sol-iris0.webp" alt="" style="left:24.83%;top:41.2%;width:12.27%">
+<img class="iris" src="img/sol-iris1.webp" alt="" style="left:75.03%;top:41.2%;width:12.27%">
+</div>
+<h1>Diogo Ferreira</h1>
+<p class="type" id="type" aria-live="off"></p>
+<p class="status un-inline-flex un-items-center un-gap-2.5"><i></i><span data-i="status">Disponível para estágio</span></p>
+<p><span class="where un-inline-flex un-items-center un-gap-2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Portugal</span></p>
+<a class="scroll-hint" href="#sobre" aria-label="↓"></a>
+</div></section>
+<section id="sobre"><div class="wrap">
+<div class="reveal">
+<h2 data-i="h_sobre">Sobre mim</h2><p class="say" data-i="s_sobre">// quem está por trás do ecrã</p>
+<div class="about">
+<p data-i="about1">Programo desde 2025.</p>
+<p data-i="about2">Procuro um estágio.</p>
+</div>
+</div>
+<div class="stats tw:grid tw:grid-cols-1 tw:gap-4 tw:min-[761px]:grid-cols-3" data-stagger>
+<div class="stat"><b>2025</b><span data-i="st1l">a programar desde</span></div>
+<div class="stat"><b>C# / .NET</b><span data-i="st2l">foco principal</span></div>
+<div class="stat"><b data-i="st3n">11.º ano</b><span data-i="st3l">Programação e Gestão de Sistemas Informáticos</span></div>
+</div>
+</div></section>
+<section id="skills"><div class="wrap">
+<div class="reveal"><h2 data-i="h_skills">O que sei fazer</h2><p class="say" data-i="s_skills">// duas constelações</p></div>
+<div class="sky tw:grid tw:grid-cols-1 tw:gap-5 tw:min-[701px]:grid-cols-2" data-stagger>
+<div class="con sol"><h3>Sol</h3><p class="say" data-i="sol_sub">front-end e design</p><ul><li>HTML</li><li>CSS</li><li>Figma</li></ul></div>
+<div class="con lua"><h3>Lua</h3><p class="say" data-i="lua_sub">código, dados e ferramentas</p><ul><li>C#</li><li>.NET</li><li>Visual Studio</li><li>APIs</li><li>MongoDB</li><li>GitHub</li></ul></div>
+</div>
+<p class="learning reveal"><b data-i="learning">a aprender:</b><br><span>Unity</span><span>C++</span><span>Blueprint</span><span>Kotlin</span></p>
+</div></section>
+<section id="projetos"><div class="wrap">
+<div class="reveal"><h2 data-i="h_proj">Projetos</h2><p class="say" data-i="s_proj">// o que já brilha</p></div>
+<div class="cards" id="cards" data-stagger>
+<article class="card" data-tone="g">
+<span class="n">01</span><h3>STAP</h3>
+<p data-i="p1">Marketplace para comprar, vender e trocar produtos com anúncios, fotos e descrições. Projeto escolar em desenvolvimento, com a base já funcional e ligada a MongoDB. A STAP API recolhe e disponibiliza os dados que sustentam as funcionalidades.</p>
+<div class="tags bulma-is-flex bulma-is-flex-wrap-wrap"><span>C#</span><span>MongoDB</span><span>API</span></div>
+<div class="go bulma-is-flex bulma-is-flex-wrap-wrap"><a href="https://github.com/yeezy3R/STAP" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ie5ab4f"/></svg><span data-i="repo_stap">Ver STAP</span></a><a href="https://github.com/yeezy3R/STAP_API" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ie5ab4f"/></svg><span data-i="repo_api">Ver STAP API</span></a></div>
+</article>
+<article class="card" data-tone="b">
+<span class="n">02</span><h3>Caos Programado</h3>
+<p data-i="p2">App leve com jogos clássicos (Jogo do Galo e Ping-Pong), login com persistência em JSON e painel de administração.</p>
+<div class="tags bulma-is-flex bulma-is-flex-wrap-wrap"><span>C#</span><span>JSON</span></div>
+<div class="go bulma-is-flex bulma-is-flex-wrap-wrap"><a href="https://github.com/yeezy3R/Caos-Programado" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ie5ab4f"/></svg><span data-i="repo_caos">Ver Caos Programado</span></a></div>
+</article>
+<article class="card" data-tone="g">
+<span class="n">03</span><h3>NOX</h3>
+<p data-i="p3">Aplicação simples de gestão de stock para organizar o inventário de produtos, com ecrã de login para controlo de acesso.</p>
+<div class="tags bulma-is-flex bulma-is-flex-wrap-wrap"><span>C#</span><span>.NET</span></div>
+<div class="go bulma-is-flex bulma-is-flex-wrap-wrap"><a href="https://github.com/yeezy3R/NOX" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ie5ab4f"/></svg><span data-i="repo_nox">Ver NOX</span></a></div>
+</article>
+</div>
+</div></section>
+<section id="percurso"><div class="wrap">
+<div class="reveal"><h2 data-i="cv_edu">Formação e percurso</h2><p class="say" data-i="s_perc">// do primeiro "hello world" até aqui</p></div>
+<div class="reveal"><div class="tl-wrap">
+<div class="tl"><time>2025</time><strong data-i="t2h">O primeiro projeto</strong><span data-i="t2p">Comecei por fazer um RPG de consola em C#/.NET.</span></div>
+<div class="tl"><time data-i="t1">2026 – hoje</time><strong data-i="t1h">11.º ano · Programação e Gestão de Sistemas Informáticos</strong><span data-i="t1p">Curso profissional com estágio este ano e no próximo.</span></div>
+</div></div>
+<div class="cvdl reveal align-middle align-justify">
+<div><b data-i="cv_dl_t">O meu CV</b><span data-i="cv_dl_note">PDF em português · muda para EN no topo para a versão inglesa</span></div>
+<a class="btn cvb" id="cv" href="cv-pt.pdf" download="Diogo-Ferreira-CV-PT.pdf"><svg class="line" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg><span data-i="cv">Descarregar CV</span></a>
+</div>
+</div></section>
+<section id="contacto">
+<div class="wrap reveal">
+<div class="eyes lua" id="eyes-lua" aria-hidden="true">
+<img class="base so-sol" src="img/lua-base.webp" alt="" width="717" height="260">
+<img class="base so-lua" src="img/lua-base-ouro.webp" alt="" width="717" height="260">
+<img class="iris so-sol" src="img/lua-iris0.webp" alt="" style="left:23.57%;top:27.3%;width:10.6%">
+<img class="iris so-lua" src="img/lua-iris0-ouro.webp" alt="" style="left:23.57%;top:27.3%;width:10.6%">
+<img class="iris so-sol" src="img/lua-iris1.webp" alt="" style="left:76.57%;top:27.3%;width:10.6%">
+<img class="iris so-lua" src="img/lua-iris1-ouro.webp" alt="" style="left:76.57%;top:27.3%;width:10.6%">
+</div>
+<p class="frase frase-baixo">only if u promise me to shine forever</p>
+</div>
+<div class="wrap">
+<div class="cvgrid" style="padding-top:26px">
+<aside class="panel side reveal">
+<div class="orb" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><img class="sunimg" src="img/sol-emblema.webp" alt=""><span class="moonwrap"><span class="moon"></span></span><span class="sp s1">✦</span><span class="sp s2">✦</span><span class="sp s3">✦</span></div>
+<p class="cvname">Diogo Ferreira</p>
+<p class="role" data-i="cv_role">Programador C# / .NET</p>
+<p class="status un-inline-flex un-items-center un-gap-2.5"><i></i><span data-i="status">Disponível para estágio</span></p>
+<p style="margin-top:14px"><span class="where un-inline-flex un-items-center un-gap-2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Portugal</span></p>
+<hr>
+<p class="say" data-i="c_side" style="margin:0 0 14px;font-size:15px">// ou encontra-me aqui</p>
+<div class="go" style="--c:var(--lua-rgb)">
+<a href="https://www.linkedin.com/in/diogo-ferreira-24b298446/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+<a href="https://github.com/yeezy3R" target="_blank" rel="noopener noreferrer" style="--c:var(--sol-rgb)"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ie5ab4f"/></svg>GitHub</a>
+</div>
+</aside>
+<section class="panel reveal">
+<h2 data-i="c_title">Vamos falar?</h2><p class="say" data-i="c_say">// escreve-me uma mensagem</p>
+<form id="form" class="pico" novalidate>
+<div class="field"><label for="f-name" data-i="c_name">Nome</label><input id="f-name" name="nome" type="text" maxlength="100" autocomplete="name" required data-ph="c_ph_name" placeholder="O teu nome"></div>
+<div class="field"><label for="f-email" data-i="c_email">Email</label><input id="f-email" name="email" type="email" maxlength="200" autocomplete="email" required data-ph="c_ph_email" placeholder="o.teu@email.com"></div>
+<div class="field"><label for="f-subj"><span data-i="c_subj">Assunto</span> <small class="opt" data-i="c_opt">(opcional)</small></label><input id="f-subj" name="assunto" type="text" maxlength="150" autocomplete="off" data-ph="c_ph_subj" placeholder="Ex.: proposta de estágio"></div>
+<div class="field"><label for="f-msg" data-i="c_msg">Mensagem</label><textarea id="f-msg" name="mensagem" maxlength="5000" rows="6" required data-ph="c_ph_msg" placeholder="Escreve aqui…"></textarea><small class="count"><span id="count">0</span>/5000</small></div>
+<div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="formrow align-middle">
+<button class="btn main" type="submit" id="send"><svg class="line estrela-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.75 5.82 6.37.78-4.69 4.38 1.2 6.3L12 17l-5.63 3.08 1.2-6.3L2.88 9.4l6.37-.78z"/></svg><span data-i="c_send">Enviar mensagem</span></button>
+<p class="priv" data-i="c_priv">O teu nome, email e mensagem ficam guardados apenas para eu te poder responder.</p>
+</div>
+<p id="fstatus" class="fstatus" role="status" aria-live="polite"></p>
+</form>
+</section>
+</div>
+</div>
+</section>
+</main>
+<footer><div class="wrap d-flex justify-content-between flex-wrap"><span>© 2026 Diogo Ferreira</span><span id="hora"></span></div></footer>
+<button type="button" class="ceu-btn" id="meteoro" data-al="meteoro" aria-label="Mudar entre sol e lua" aria-pressed="false">
+<span class="ceu-halo" aria-hidden="true"></span>
+<span class="ceu-janela" aria-hidden="true"><span class="eyes lua ceu-olhos">
+<img class="base so-sol" src="img/lua-base.webp" alt="" width="717" height="260">
+<img class="base so-lua" src="img/lua-base-ouro.webp" alt="" width="717" height="260">
+<img class="iris so-sol" src="img/lua-iris0.webp" alt="" style="left:23.57%;top:27.3%;width:10.6%">
+<img class="iris so-lua" src="img/lua-iris0-ouro.webp" alt="" style="left:23.57%;top:27.3%;width:10.6%">
+<img class="iris so-sol" src="img/lua-iris1.webp" alt="" style="left:76.57%;top:27.3%;width:10.6%">
+<img class="iris so-lua" src="img/lua-iris1-ouro.webp" alt="" style="left:76.57%;top:27.3%;width:10.6%">
+</span></span>
+<span class="ceu-brilho b1" aria-hidden="true">✦</span><span class="ceu-brilho b2" aria-hidden="true">✦</span>
+<span class="ceu-dica" aria-hidden="true" data-i="meteoro_dica">clica e muda o céu</span>
+</button>
+<script src="js/traducoes-extra.js"></script>
+<script src="js/main.js"></script><script src="js/meteoro.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/formulario.js"></script><script src="js/estrela.js"></script>
+</body>
+</html>

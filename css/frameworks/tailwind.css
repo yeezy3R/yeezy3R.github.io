@@ -1,0 +1,2 @@
+/*! tailwindcss v4.3.5 | MIT License | https://tailwindcss.com */
+@layer theme{:root,:host{--tw-spacing:.25rem}}@layer utilities{.tw\:grid{display:grid}.tw\:grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.tw\:gap-4{gap:calc(var(--tw-spacing) * 4)}.tw\:gap-5{gap:calc(var(--tw-spacing) * 5)}@media (min-width:701px){.tw\:min-\[701px\]\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:761px){.tw\:min-\[761px\]\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}}
